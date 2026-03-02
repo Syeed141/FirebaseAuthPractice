@@ -1,7 +1,12 @@
-import React from 'react';
-import { NavLink } from 'react-router';
+import React, { use } from 'react';
+import { Link, Links, NavLink } from 'react-router';
+import { AuthContext } from '../Context/AuthContext';
 
 const Navbar = () => {
+
+  const {user} = use(AuthContext)
+
+  console.log(user)
 
     const links = <div className='flex gap-5'> 
     
@@ -38,7 +43,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Button</a>
+    {user ? <a className="btn">Sign out</a> : <Link to="/Login">Login</Link>}
   </div>
 </div>
     );
